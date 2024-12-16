@@ -16,5 +16,10 @@
     "url": "https://github.com/manonja/node-http-server-from-scratch/issues"
   },
   "homepage": "https://github.com/manonja/node-http-server-from-scratch#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
 }
