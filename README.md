@@ -60,3 +60,15 @@ If request parsing fails, return a 400 Bad Request.We are making sure to always 
 ### Routing
 
 We are using a simple if else statement to handle routing.
+
+### Next steps
+
+- Add support for HTTPS
+- Add support for WebSockets
+- Serve a frontend page directly from the server:
+        - Create a HTML static page
+        - Modify the server to serve the page
+        - Add a route to serve the page
+        - Add CSS and JS to the page
+- Add Authentication
+- Add caching 
