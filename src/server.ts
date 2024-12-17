@@ -10,9 +10,6 @@ import { buildHttpResponse } from './responseBuilder';
 
 const handleRequest = (requestString: string) => {
     const request = parseRequest(requestString);
-    console.log("REQUEST", request)
-
-
     const response = buildHttpResponse({
         statusCode: 200,
         statusMessage: 'OK',
@@ -28,7 +25,6 @@ const handleRequest = (requestString: string) => {
 const createDataHandler = (socket: net.Socket, buffer: string): ((chunk: Buffer) => void) => {
     return (chunk: Buffer) => {
         const newBuffer = buffer.concat(chunk.toString());
-        console.log("NEW BUFFER", newBuffer)
         // Check if we have a full HTTP request, headers ends with \r\n\r\n
         if (newBuffer.includes('\r\n\r\n')) {
             const response = handleRequest(newBuffer);

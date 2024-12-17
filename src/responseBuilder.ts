@@ -23,7 +23,6 @@ export function buildHttpResponse(options: HttpResponseOptions): string {
     .map(([key, value]) => `${key}: ${value}`)
     .join('\r\n');
 
-    console.log("HEADERLINES", headerLines)
   // Note: \r\n separates lines in HTTP
     return `HTTP/1.1 ${statusCode} ${statusMessage}\r\n` +
         `${headerLines}\r\n` +
