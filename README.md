@@ -34,6 +34,20 @@ GET / HTTP/1.1
 Host: localhost
 ```
 
+## Testing different methods
+- GET
+`curl http://localhost:8080/` you should get a 200 response with a body of "Welcome to the Home Page!"
+- GET /api
+`curl http://localhost:8080/api` you should get a 200 response with a body of "Hello from the API"
+
+- POST /
+`curl -X POST -H "Content-Type: application/json" -d '{"user":"Alice"}' http://localhost:8080/api` you should get a 200 response with a json body of {"received":{"user":"Alice"},"message":"Data received successfully"}
+
+- PUT /api and DELETE
+`curl -X PUT http://localhost:8080/api` you should get a "Method not allowed" response since PUT and DELETE are not supported
+
+
+
 ## Refinements and Best Practices
 
 ### Code Organization:
