@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # node-http-server-from-scratch
 =======
 # HTTP Server
