@@ -72,3 +72,9 @@ We are using a simple if else statement to handle routing.
         - Add CSS and JS to the page
 - Add Authentication
 - Add caching 
+
+## Development Setup
+This project requires JPEG images in the `public/images` directory:
+- Place your .jpg files in `public/images/`
+- Files should be named `photo-1.jpg` through `photo-72.jpg`
+- Sample images are available at: [link to download sample images]

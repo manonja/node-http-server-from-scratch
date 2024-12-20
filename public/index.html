@@ -1,0 +1,79 @@
+<!-- Roles of a web server: 
+- The client for instance a browser, will send an HTTP request to the server’s IP address and a specific port number 
+- The server will receive the request and process it.
+- The server will send a response back to the client.
+- The client will receive the response and display it.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rawsomness</title>
+</head>
+<body>
+    <!-- Add CSS to this file so the image is centered and the text is pink and the background is dark -->   
+    <style>
+        #randomImageButton {
+            display: block;
+            margin: 0 auto;
+            background-color: transparent;
+            color: white;
+            padding: 10px 20px;
+            border: 2px solid rgb(222, 7, 140);
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        body {
+            background-color: #101517;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 800px;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: rgb(222, 7, 140);
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            background-color: rgba(16, 21, 23, 0.9);
+            z-index: 1;
+        }
+        p {
+            color: rgb(222, 7, 140);
+        }
+    </style>
+    <h1>Rawsomness People</h1>
+    <!-- Add a button to the page that will display a random image from the images folder -->
+    <button id="randomImageButton" onclick="displayRandomImage()">Relax and click to see a random image</button>   
+
+
+    <img id="randomImage" src="/images/photo-1.jpg" alt="Random Image">
+    
+    <!-- Move the script inside the body -->
+    <script>
+        function displayRandomImage() {
+            const randomImage = Math.floor(Math.random() * 72) + 1;
+            document.getElementById('randomImage').src = `/images/photo-${randomImage}.jpg`;
+        }
+    </script>
+</body>
+</html>

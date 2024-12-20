@@ -11,10 +11,12 @@
     [Body starts here, if any]
 */
 
+import { logger } from "./server";
+
 
 export interface ParsedRequest {
     headers: Record<string, string>;
-    body: string;
+    body?: string | Buffer;
     method: string;
     path: string;
     httpVersion: string;
@@ -45,6 +47,14 @@ export function parseRequest(rawData: string): ParsedRequest {
         if (!key) continue;
         headers[key.trim().toLowerCase()] = rest.join(':').trim();
     }
+
+    logger.info('Parsed request', {
+        method,
+        path,
+        httpVersion,
+        headers,
+        body
+    });
 
     return {
         method,
