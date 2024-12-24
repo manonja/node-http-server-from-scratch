@@ -4,28 +4,19 @@
 */
 
 export interface HttpResponseOptions {
-    statusCode: number;
-    statusMessage?: string;
-    headers?: Record<string, string>;
-    body?: string;
+  statusCode: number;
+  statusMessage?: string;
+  headers?: Record<string, string>;
+  body?: string;
 }
 
 export function buildHttpResponse(options: HttpResponseOptions): string {
-    const {
-        statusCode = 200,
-        statusMessage = 'OK',
-        headers = {},
-        body = '',
-    } = options
+  const { statusCode = 200, statusMessage = 'OK', headers = {}, body = '' } = options;
 
-
-    const headerLines = Object.entries(headers)
+  const headerLines = Object.entries(headers)
     .map(([key, value]) => `${key}: ${value}`)
     .join('\r\n');
 
   // Note: \r\n separates lines in HTTP
-    return `HTTP/1.1 ${statusCode} ${statusMessage}\r\n` +
-        `${headerLines}\r\n` +
-        `\r\n` +
-        `${body}`;
+  return `HTTP/1.1 ${statusCode} ${statusMessage}\r\n` + `${headerLines}\r\n` + `\r\n` + `${body}`;
 }

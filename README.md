@@ -1,5 +1,7 @@
 # node-http-server-from-scratch
+
 =======
+
 # HTTP Server
 
 This is a simple HTTP server implementation in Node.js. It listens for incoming connections on a specified port and handles HTTP requests by parsing the request headers and body, processing the request, and then sending a response back to the client.
@@ -34,18 +36,17 @@ Host: localhost
 ```
 
 ## Testing different methods
+
 - GET
-`curl http://localhost:8080/` you should get a 200 response with a body of "Welcome to the Home Page!"
+  `curl http://localhost:8080/` you should get a 200 response with a body of "Welcome to the Home Page!"
 - GET /api
-`curl http://localhost:8080/api` you should get a 200 response with a body of "Hello from the API"
+  `curl http://localhost:8080/api` you should get a 200 response with a body of "Hello from the API"
 
 - POST /
-`curl -X POST -H "Content-Type: application/json" -d '{"user":"Alice"}' http://localhost:8080/api` you should get a 200 response with a json body of {"received":{"user":"Alice"},"message":"Data received successfully"}
+  `curl -X POST -H "Content-Type: application/json" -d '{"user":"Alice"}' http://localhost:8080/api` you should get a 200 response with a json body of {"received":{"user":"Alice"},"message":"Data received successfully"}
 
 - PUT /api and DELETE
-`curl -X PUT http://localhost:8080/api` you should get a "Method not allowed" response since PUT and DELETE are not supported
-
-
+  `curl -X PUT http://localhost:8080/api` you should get a "Method not allowed" response since PUT and DELETE are not supported
 
 ## Refinements and Best Practices
 
@@ -65,16 +66,14 @@ We are using a simple if else statement to handle routing.
 
 - Add support for HTTPS
 - Add support for WebSockets
-- Serve a frontend page directly from the server:
-        - Create a HTML static page
-        - Modify the server to serve the page
-        - Add a route to serve the page
-        - Add CSS and JS to the page
+- Serve a frontend page directly from the server: - Create a HTML static page - Modify the server to serve the page - Add a route to serve the page - Add CSS and JS to the page
 - Add Authentication
-- Add caching 
+- Add caching
 
 ## Development Setup
+
 This project requires JPEG images in the `public/images` directory:
+
 - Place your .jpg files in `public/images/`
 - Files should be named `photo-1.jpg` through `photo-72.jpg`
 - Sample images are available at: [link to download sample images]

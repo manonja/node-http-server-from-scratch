@@ -5,8 +5,10 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1", 
-    "inspect": "node --inspect dist/server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "inspect": "node --inspect dist/server.js",
+    "format": "prettier --write  '**/*.{js,jsx,ts,tsx,json,md,html}'",
+    "lint": "eslint . --ext .ts"
   },
   "repository": {
     "type": "git",
