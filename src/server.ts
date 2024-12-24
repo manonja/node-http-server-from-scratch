@@ -56,8 +56,13 @@ const createDataHandler = (
             socket.write(formatHttpResponse(response));
             socket.end();
         } else {
+          // Inspect if the socket is still open before doing any operation on it
+          if (socket.writable) {
             socket.removeAllListeners('data');
             socket.on('data', createDataHandler(socket, newBuffer, handleRequest));
+          } else {
+            logger.error('Socket is not writable');
+          }
         }
     }
 }
