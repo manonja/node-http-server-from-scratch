@@ -8,7 +8,7 @@ interface HttpResponse {
   body: string | Buffer;
 }
 
-export function handleRequest(rawRequest: string = ''): HttpResponse {
+export function handleHTTPRequest(rawRequest: string = ''): HttpResponse {
   const request = parseRequest(rawRequest);
 
   if (!request) {

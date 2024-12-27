@@ -4,7 +4,7 @@
 */
 
 import net from 'node:net';
-import { handleRequest } from './handleRequest';
+import { handleHTTPRequest } from './handleRequest';
 import winston from 'winston';
 
 export const logger = winston.createLogger({
@@ -38,7 +38,6 @@ export const logger = winston.createLogger({
 
 const createDataHandler = (
   socket: net.Socket,
-  buffer: string,
   handleRequest: (rawRequest: string) => {
     statusCode: number;
     statusMessage: string;
@@ -46,20 +45,17 @@ const createDataHandler = (
     body: string | Buffer;
   },
 ): ((chunk: Buffer) => void) => {
+  let buffer = '';
+  
   return (chunk: Buffer) => {
-    const newBuffer = buffer.concat(chunk.toString());
-    if (newBuffer.includes('\r\n\r\n')) {
-      const response = handleRequest(newBuffer);
-      socket.write(formatHttpResponse(response));
-      socket.end();
-    } else {
-      // Inspect if the socket is still open before doing any operation on it
+    buffer += chunk.toString();
+    if (buffer.includes('\r\n\r\n')) {
+      const response = handleRequest(buffer);
       if (socket.writable) {
-        socket.removeAllListeners('data');
-        // TODO: remove recursive call
-        socket.on('data', createDataHandler(socket, newBuffer, handleRequest));
+        socket.write(formatHttpResponse(response));
+        socket.end();
       } else {
-        logger.error('Socket is not writable');
+        logger.error('Socket is not writable, skipping response');
       }
     }
   };
@@ -84,8 +80,7 @@ function formatHttpResponse(response: {
 }
 
 const server = net.createServer((socket) => {
-  // Start with an empty buffer
-  socket.on('data', createDataHandler(socket, '', handleRequest));
+  socket.on('data', createDataHandler(socket, handleHTTPRequest));
 });
 
 server.listen(8080, () => {
