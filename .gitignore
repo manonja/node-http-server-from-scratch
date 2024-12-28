@@ -33,3 +33,17 @@ package-lock.json
 
 # ignore ts-node
 ts-node
+
+# Ignore image files
+public/images/*.jpg
+public/images/*.jpeg
+public/images/*.png
+public/images/*.gif
+public/images/*.webp
+
+# Ignore logs
+logs/
+*.log
+
+# Keep the images directory structure
+!public/images/.gitkeep
