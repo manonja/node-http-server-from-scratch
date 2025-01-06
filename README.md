@@ -11,6 +11,7 @@ This is a simple HTTP server implementation in Node.js. It listens for incoming 
 - Handles GET requests by responding with a simple "Hello, World!" message.
 - Supports basic HTTP/1.1 protocol.
 - Handles partial HTTP requests by accumulating data until a complete request is received.
+- Serves images from the server
 
 ## Usage
 
@@ -62,7 +63,7 @@ If request parsing fails, return a 400 Bad Request.We are making sure to always 
 
 We are using a simple if else statement to handle routing.
 
-### Next steps
+### Improvements
 
 - Add support for HTTPS
 - Add support for WebSockets
